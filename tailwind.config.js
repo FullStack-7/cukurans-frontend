@@ -5,9 +5,13 @@ export default {
 		extend: {
 			colors: {
 				primaryColor: '#15E8D8',
-				textColor: '#fffff',
 				textSecondaryColor: '#c9d4d3',
-				hoverColor: '#17b3a5',
+				irisBlueColor: '#01B5C5',
+				yellowColor: '#FEB60D',
+				purpleColor: '#9771FF',
+				irisBlueColor: '#01B5C5',
+				headingColor: '#181A1E',
+				textColor: '#4E545F',
 			},
 			boxShadow: {
 				shadowPanel: 'rgba(17,12, 46, 0.15) 0px 48px 100px 0px',
