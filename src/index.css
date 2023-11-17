@@ -10,7 +10,7 @@
 
 @layer components {
 	.container {
-		@apply w-[1440px] px-11 mx-auto;
+		@apply w-[1440px] px-14 mx-auto;
 	}
 
 	.btn {
