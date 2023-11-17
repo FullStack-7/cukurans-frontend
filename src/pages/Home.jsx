@@ -1,11 +1,17 @@
+import BarberList from '../components/Barbers/BarberList';
+import Faqlist from '../components/Faq/Faqlist';
 import HeroSection from '../components/Hero/HeroSection';
-import Services from '../components/Menu/Services';
+import Menu from '../components/Menu/Menu';
+import Testimonial from '../components/Testimonial/Testimonial';
 
 const Home = () => {
 	return (
 		<>
 			<HeroSection />
-			<Services />
+			<Menu />
+			<BarberList />
+			<Faqlist />
+			<Testimonial />
 		</>
 	);
 };

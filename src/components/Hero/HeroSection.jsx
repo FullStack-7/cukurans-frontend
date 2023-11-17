@@ -6,7 +6,7 @@ const HeroSection = () => {
 	return (
 		<>
 			{/* Hero Section */}
-			<section className="hero__section pt-[60px] 2xl:h-[800px]">
+			<section className="pt-[60px] 2xl:h-[800px]">
 				<div className="container">
 					<div className="flex flex-col lg:flex-row gap-[90px] items-center justify-between">
 						{/* Hero Content */}
@@ -20,7 +20,9 @@ const HeroSection = () => {
 									pengalaman potong rambut yang luar biasa dan kami berkomitmen
 									memberikan layanan terbaik untuk penampilan Anda.
 								</p>
-								<button className="btn">Booking Sekarang</button>
+								<button className="btn hover:bg-hoverColor">
+									Booking Sekarang
+								</button>
 							</div>
 							{/* Hero */}
 							<div className="mt-[30px] lg:mt-[70px] flex flex-col lg:flex-row lg:items-center gap-5 lg:gap-[30px]">
