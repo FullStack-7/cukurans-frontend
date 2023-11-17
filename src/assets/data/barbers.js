@@ -6,7 +6,7 @@ export const barbers = [
 	{
 		id: '1',
 		name: 'Joni Iskandar',
-		experience: 'Pengalaman 5 Tahun',
+		experience: '5+ Pengalaman',
 		avgRating: 4.8,
 		totalRating: 210,
 		photo: barber1,
@@ -14,7 +14,7 @@ export const barbers = [
 	{
 		id: '2',
 		name: 'Rizky Saputra',
-		experience: 'Pengalaman 3 Tahun',
+		experience: '3+ Pengalaman',
 		avgRating: 4.7,
 		totalRating: 212,
 		photo: barber2,
@@ -22,7 +22,7 @@ export const barbers = [
 	{
 		id: '3',
 		name: 'Ismed Sofyan',
-		experience: 'Pengalaman 6 Tahun',
+		experience: '6+ Pengalaman',
 		avgRating: 4.8,
 		totalRating: 222,
 		photo: barber3,
