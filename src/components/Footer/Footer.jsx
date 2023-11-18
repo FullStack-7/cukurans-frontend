@@ -19,7 +19,7 @@ const socialMedia = [
 
 const Links1 = [
 	{
-		path: '/home',
+		path: '/',
 		display: 'Home',
 	},
 	{
@@ -40,10 +40,6 @@ const Links2 = [
 	{
 		path: '/barbers',
 		display: 'Booking Barber',
-	},
-	{
-		path: '/',
-		display: 'Beri Masukan',
 	},
 ];
 
