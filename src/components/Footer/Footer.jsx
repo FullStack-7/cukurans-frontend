@@ -26,10 +26,6 @@ const Links1 = [
 		path: '/services',
 		display: 'Layanan',
 	},
-	{
-		path: '/',
-		display: 'Blog',
-	},
 ];
 
 const Links2 = [
