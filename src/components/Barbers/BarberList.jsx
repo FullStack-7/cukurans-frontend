@@ -7,7 +7,7 @@ const BarberList = () => {
 			<div className="container">
 				<div className="xl:w-[470px] mx-auto">
 					<h2 className="heading text-center">Barber kami</h2>
-					<p className="text__para text-center mb-4">
+					<p className="text_para text-center mb-4">
 						Tenaga professional yang berada didalam barbershop kami
 					</p>
 				</div>
