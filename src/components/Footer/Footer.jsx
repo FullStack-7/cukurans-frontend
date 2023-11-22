@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { RiTwitterFill } from 'react-icons/ri';
 import { AiFillGithub, AiFillInstagram } from 'react-icons/ai';
+import logo from '../../assets/logo.png';
 
 const socialMedia = [
 	{
@@ -19,16 +20,12 @@ const socialMedia = [
 
 const Links1 = [
 	{
-		path: '/home',
+		path: '/',
 		display: 'Home',
 	},
 	{
 		path: '/services',
 		display: 'Layanan',
-	},
-	{
-		path: '/',
-		display: 'Blog',
 	},
 ];
 
@@ -40,10 +37,6 @@ const Links2 = [
 	{
 		path: '/barbers',
 		display: 'Booking Barber',
-	},
-	{
-		path: '/',
-		display: 'Beri Masukan',
 	},
 ];
 
@@ -66,8 +59,8 @@ const Footer = () => {
 			<div className="container">
 				<div className="flex justify-between flex-col md:flex-row flex-wrap gap-[30px]">
 					<div>
-						{/* <img src={logo} alt="" /> */}
-						<p className="text-[16px] leading-7 font-[400] text-textColor">
+						<img src={logo} alt="" />
+						<p className="text-[16px] leading-7 font-[400] text-textColor mt-3">
 							@Fs-7 all right reserved {year}
 						</p>
 
