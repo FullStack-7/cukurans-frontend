@@ -40,7 +40,9 @@ const Feedback = () => {
 
 			{!formFeedback && (
 				<div className="text-center">
-					<button className="btn" onClick={() => setFormFeedback(true)}>
+					<button
+						className="btn rounded-lg"
+						onClick={() => setFormFeedback(true)}>
 						Berikan Feedback
 					</button>
 				</div>
