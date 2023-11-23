@@ -53,7 +53,10 @@ const SideForm = () => {
                 )
             }
 
-			<button className="btn px-2 w-full rounded-md">Booking Sekarang</button>
+			<button 
+				className="btn px-2 w-full rounded-md" onClick={() => setIsOpen(true)}>
+					Booking Sekarang
+				</button>
 		</div>
 	);
 };

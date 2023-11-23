@@ -1,42 +1,207 @@
-import { Link } from 'react-router-dom';
-import starIcon from '../../assets/Star.png';
-import { BsArrowRight } from 'react-icons/bs';
+import { IoIosCloseCircleOutline } from "react-icons/io"
+import { SlMustache } from "react-icons/sl"
+import { LuPaintbrush2 } from "react-icons/lu"
+import { FaHandHoldingWater } from "react-icons/fa"
+import { useEffect, useState } from "react"
+import Calendar from "react-calendar"
+import "react-calendar/dist/Calendar.css"
 
-const BarberCard = ({ barber }) => {
-	const { name, avgRating, totalRating, photo, experience } = barber;
+const bookingHours = [
+	"10:00 AM",
+	"10:30 AM",
+	"11:00 AM",
+	"11:30 AM",
+	"12:00 PM",
+	"01:00 PM",
+	"01:30 PM",
+	"02:00 PM",
+	"02:30 PM",
+	"03:00 PM",
+	"03:30 PM",
+	"04:00 PM",
+	"04:30 PM",
+	"05:00 PM",
+	"05:30 PM",
+	"06:00 PM",
+	"06:30 PM",
+	"07:00 PM",
+	"07:30 PM",
+	"08:00 PM",
+	"08:30 PM",
+]
+
+const services = [
+	{
+		id: 1,
+		name: "warnai rambut",
+		price: 100000,
+		icon: <LuPaintbrush2 className="text-[40px]" />,
+		smallIcon: <LuPaintbrush2 className="text-[20px]" />,
+	},
+	{
+		id: 2,
+		name: "keramas",
+		price: 100000,
+		icon: <FaHandHoldingWater className="text-[40px]" />,
+		smallIcon: <FaHandHoldingWater className="text-[20px]" />,
+	},
+	{
+		id: 3,
+		name: "cukur jenggot",
+		price: 100000,
+		icon: <SlMustache className="text-[40px]" />,
+		smallIcon: <SlMustache className="text-[20px]" />,
+	},
+]
+
+const BookingCard = ({ closeModal }) => {
+	const [bookingDate, setBookingDate] = useState(new Date())
+	const [bookingHour, setBookingHour] = useState(bookingHours[0])
+	const haircut = 100000
+	const [total, setTotal] = useState(haircut)
+	const [selectedServices, setSelectedServices] = useState([])
+
+	useEffect(() => {
+		if (selectedServices.length > 0) {
+			const totalServices = selectedServices.reduce((total, service) => {
+				return total + service.price
+			}, 0)
+			setTotal(haircut + totalServices)
+		} else {
+			setTotal(haircut)
+		}
+	}, [selectedServices])
+
+	// valid days are from today until one month ahead
+	// valid day only on monday, thursday, and saturday
+	const currentDate = new Date()
+	// Calculate the date one month ahead
+	const oneMonthAhead = new Date()
+	oneMonthAhead.setMonth(currentDate.getMonth() + 1)
+
+	const tileDisabled = ({ date }) => {
+		return (
+			date < currentDate ||
+			date >= oneMonthAhead ||
+			!(date.getDay() === 1 || date.getDay() === 4 || date.getDay() === 6)
+		)
+	}
+
+	// Function to toggle and add services to state
+	const toggleService = (service) => {
+		const isServiceSelected = selectedServices.some(
+			(selected) => selected.id === service.id,
+		)
+
+		if (isServiceSelected) {
+			// Remove service if already selected
+			const updatedServices = selectedServices.filter(
+				(selected) => selected.id !== service.id,
+			)
+			setSelectedServices(updatedServices)
+		} else {
+			// Add service if not selected
+			setSelectedServices([...selectedServices, service])
+		}
+	}
 
 	return (
-		<div className="p-3 lg:p-5">
-			<div>
-				<img src={photo} alt="" className="rounded-lg w-full" />
-			</div>
+		<div className="fixed top-0 left-0">
+			<div className="w-screen h-screen bg-black bg-opacity-40">
+				<div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 md:w-96 w-full px-5">
+					<div className="max-h-[500px] overflow-scroll shadow-md rounded-md bg-white p-5 w-full relative">
+						<IoIosCloseCircleOutline
+							className="absolute top-3 right-3 text-[40px] cursor-pointer"
+							onClick={() => closeModal()}
+						/>
+						<p className="text-[18px] leading-[30px] lg:text-[26px] lg:leading-9 text-headingColor font-[700] mt-3">
+							Book Appointment
+						</p>
+						<p>Layanan tambahan</p>
+						<div className="grid grid-cols-3 gap-3 text-sm py-3">
+							{services.map((service, index) => (
+								<div
+									key={"service-" + index}
+									className="col-span-1 text-center"
+									onClick={() => toggleService(service)}
+								>
+									<button className="rounded-full border border-black p-2 mb-2">
+										{service.icon}
+									</button>
+									<p>{service.name}</p>
+								</div>
+							))}
+						</div>
+						<p>Pilih Tanggal</p>
+						<Calendar
+							onChange={setBookingDate}
+							value={bookingDate}
+							className={["rounded-lg", "my-4"]}
+							tileDisabled={tileDisabled}
+						/>
 
-			<div className="text-[18px] leading-[30px] lg:text-[26px] lg:leading-9 text-headingColor font-[700] mt-3 lg:mt-5 flex items-center justify-between">
-				{name}
-				<Link
-					to="/barbers/:id"
-					className="w-[44px] h-[44px] rounded-full border border-solid border-[#181A1E] flex items-center justify-center group hover:bg-primaryColor hover:border-none">
-					<BsArrowRight className="group-hover:text-white w-6 h-5" />
-				</Link>
-			</div>
+						<p>Pilih waktu mulai</p>
 
-			<div className="mt-2 lg:mt-4 flex items-center justify-between">
-				<span className="bg-[#CCF0F3] text-irisBlueColor py-1 px-2 lg:py-2 lg:px-6 text-[12px] leading-4 lg:text-[16px] lg:leading-7 font-semibold rounded">
-					{experience}
-				</span>
-
-				<div className="flex items-center gap-[6px]">
-					<span className="flex items-center gap-[6px] text-[14px] leading-6 lg:text-[16px] lg:leading-7 font-semibold text-headingColor">
-						<img src={starIcon} alt="" /> {avgRating}
-					</span>
-
-					<span className="text-[14px] leading-6 lg:text-[16px] lg:leading-7 font-[400] text-textColor">
-						({totalRating})
-					</span>
+						<select className="w-full" size={3} value={bookingHour}>
+							{bookingHours.map((hour, index) => (
+								<option
+									key={"hour-" + index}
+									selected={hour === bookingHour}
+									className={`${
+										hour === bookingHour ? "bg-blue-300" : "bg-teal-300"
+									} mb-2 text-white font-extrabold text-center rounded-lg p-2`}
+									onClick={() => setBookingHour(hour)}
+								>
+									{hour}
+								</option>
+							))}
+						</select>
+						<p className="font-extrabold text-lg mt-5 mb-2">Summary</p>
+						<div className="grid grid-cols-4 bg-teal-100 shadow-md rounded-md mb-5">
+							<div className="bg-teal-600 col-span-1 rounded-s-md text-white px-2 py-3">
+								<p className="text-lg font-bold">
+									{bookingDate.toLocaleDateString("en-US", {
+										weekday: "short",
+									})}
+								</p>
+								<p className="font-extrabold">{bookingDate.getDate()}</p>
+								<hr className="my-3 border-2 border-white" />
+								<p className="text-xs">{bookingHour}</p>
+							</div>
+							<div className="col-span-3 p-2 py-3">
+								<p className="text-xs mb-3">Layanan Tambahan</p>
+								<div className="grid grid-cols-3 gap-3 ">
+									{selectedServices.length > 0 ? (
+										selectedServices.map((service, index) => (
+											<div
+												key={"service-" + index}
+												className="col-span-1 text-center"
+												onClick={() => toggleService(service)}
+											>
+												<button className="rounded-full border border-black p-2 mb-2">
+													{service.smallIcon}
+												</button>
+												<p className="text-xs">{service.name}</p>
+											</div>
+										))
+									) : (
+										<p className="text-xs col-span-3">
+											Tidak ada layanan tambahan
+										</p>
+									)}
+								</div>
+								<hr className="my-3 border-2 border-white" />
+								<p>Total: Rp.{total}</p>
+							</div>
+						</div>
+						<button className="bg-teal-300 py-3 text-center w-full rounded-lg font-extrabold text-white focus:bg-teal-800">
+							Buat Janji
+						</button>
+					</div>
 				</div>
 			</div>
 		</div>
-	);
-};
+	)
+}
 
-export default BarberCard;
+export default BookingCard
