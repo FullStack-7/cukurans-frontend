@@ -1,6 +1,9 @@
 import React from 'react';
+import { useState } from "react"
+import BookingCard from "../../components/Barbers/BookingCard"
 
 const SideForm = () => {
+	const [isOpen, setIsOpen] = useState(false)
 	return (
 		<div className="shadow-shadowPanel p-3 lg:p-5 rounded-md">
 			<div className="flex items-center justify-between">
@@ -42,6 +45,13 @@ const SideForm = () => {
 					</li>
 				</ul>
 			</div>
+
+			{
+                // Modal
+                isOpen && (
+                    <BookingCard closeModal={() => setIsOpen(close)}></BookingCard>
+                )
+            }
 
 			<button className="btn px-2 w-full rounded-md">Booking Sekarang</button>
 		</div>
