@@ -6,6 +6,8 @@ import Login from '../pages/Login';
 import SignUp from '../pages/SignUp';
 import Barbers from '../pages/Barbers/Barbers';
 import BarberDetails from '../pages/Barbers/BarberDetails';
+import UserDashboard from '../dashboard/user/UserDashboard';
+import BarberDashboard from '../dashboard/barber/BarberDashboard';
 
 import { Routes, Route } from 'react-router-dom';
 
@@ -19,6 +21,8 @@ const Routers = () => {
 			<Route path="/contact" element={<Contact />} />
 			<Route path="/login" element={<Login />} />
 			<Route path="/register" element={<SignUp />} />
+			<Route path="/dashboard-user" element={<UserDashboard />} />
+			<Route path="/dashboard-barber" element={<BarberDashboard />} />
 		</Routes>
 	);
 };
