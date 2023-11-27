@@ -60,8 +60,8 @@ const Header = () => {
 										to={item.path}
 										className={(navClass) =>
 											navClass.isActive
-												? 'text-primaryColor text-[18px] leading-7 font-[500]'
-												: 'text-textColor text-[18px] leading-7 font-[500] hover:text-primaryColor'
+												? 'text-primaryColor text-[16px] leading-7 font-[500]'
+												: 'text-textColor text-[16px] leading-7 font-[500] hover:text-primaryColor'
 										}>
 										{item.display}
 									</NavLink>
