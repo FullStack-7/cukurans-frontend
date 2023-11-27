@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import userImg from '../../assets/avatar-icon.png';
+import logo from '../../assets/logo.png';
 import { BiMenu } from 'react-icons/bi';
 
 const navLinks = [
@@ -47,9 +48,7 @@ const Header = () => {
 					{/* LOGO */}
 					<div>
 						<Link to="/">
-							<h1 className="text-textColor font-semibold text-[18px]">
-								Cukurans
-							</h1>
+							<img src={logo} alt="" />
 						</Link>
 					</div>
 					{/* MENU */}
@@ -82,7 +81,7 @@ const Header = () => {
 						</div>
 
 						<Link to="/login">
-							<button className="bg-primaryColor py-2 px-4 text-white font-[500] h-[44px] flex items-center justify-center rounded-[50px] text-[18px] hover:bg-hoverColor">
+							<button className="bg-primaryColor py-2 px-4 text-white font-[500] h-[44px] flex items-center justify-center rounded-lg text-[18px] hover:bg-hoverColor">
 								Login
 							</button>
 						</Link>

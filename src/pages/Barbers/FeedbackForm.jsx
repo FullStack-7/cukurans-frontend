@@ -57,7 +57,10 @@ const FeedbackForm = () => {
 					onClick={() => setReviewText(e.target.value)}></textarea>
 			</div>
 
-			<button type="submit" className="btn" onClick={handleSubmitText}>
+			<button
+				type="submit"
+				className="btn rounded-lg"
+				onClick={handleSubmitText}>
 				Kirim pesan
 			</button>
 		</form>
