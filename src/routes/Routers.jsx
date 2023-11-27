@@ -3,9 +3,11 @@ import Home from '../pages/Home';
 import Services from '../pages/Services';
 import Contact from '../pages/Contact';
 import Login from '../pages/Login';
+import BarberDashboard from '../dashboard/Barber/BarberDashboard';
+import BarberDetails from '../pages/Barbers/BarberDetails';
 import SignUp from '../pages/SignUp';
 import Barbers from '../pages/Barbers/Barbers';
-import BarberDetails from '../pages/Barbers/BarberDetails';
+import UserDashboard from '../dashboard/User/UserDashboard';
 
 import { Routes, Route } from 'react-router-dom';
 
@@ -19,6 +21,8 @@ const Routers = () => {
 			<Route path="/contact" element={<Contact />} />
 			<Route path="/login" element={<Login />} />
 			<Route path="/register" element={<SignUp />} />
+			<Route path="/dashboard-user" element={<UserDashboard />} />
+			<Route path="/dashboard-barber" element={<BarberDashboard />} />
 		</Routes>
 	);
 };
