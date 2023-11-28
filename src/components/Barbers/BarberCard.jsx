@@ -29,7 +29,7 @@ const BarberCard = () => {
 			{barber.data?.map((item) => (
 				<div className="p-3 lg:p-5" key={item._id}>
 					<div>
-						<img src="" alt="" className="rounded-lg w-full" />
+						<img src={item.image} alt="" className="rounded-lg w-full" />
 					</div>
 
 					<div className="text-[18px] leading-[30px] lg:text-[26px] lg:leading-9 text-headingColor font-[700] mt-3 lg:mt-5 flex items-center justify-between">
