@@ -1,4 +1,3 @@
-import { barbers } from '../../assets/data/barbers.js';
 import BarberCard from '../../components/Barbers/BarberCard.jsx';
 
 const Barbers = () => {
@@ -23,9 +22,7 @@ const Barbers = () => {
 			<section>
 				<div className="container">
 					<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-5">
-						{barbers.map((barber) => (
-							<BarberCard key={barber.id} barber={barber} />
-						))}
+						<BarberCard />
 					</div>
 				</div>
 			</section>
