@@ -36,9 +36,9 @@ const Services = () => {
 						<div
 							className="shadow-lg rounded-xl mt-[30px] lg:mt-[55px]"
 							key={service._id}>
-							{/* <div className="mx-4 mt-4 rounded-xl bg-slate-100">
-								<img src={icon1} className="w-full h-full" />
-							</div> */}
+							<div className="mx-4 mt-4 rounded-xl bg-slate-100">
+								<img src={service.image} className="w-full h-full" />
+							</div>
 							<div className="p-6">
 								<div className="flex items-center justify-between mb-2">
 									<h2 className="text-lg antialiased font-bold leading-relaxed text-headingColor">
