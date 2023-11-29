@@ -1,1 +1,1 @@
-export const BASE_URL = 'https://easy-erin-ray-wig.cyclic.app';
+export const BASE_URL = 'https://smiling-ray-bedclothes.cyclic.app';
