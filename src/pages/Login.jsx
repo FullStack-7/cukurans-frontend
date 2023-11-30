@@ -40,6 +40,7 @@ const Login = () => {
 				type: 'LOGIN_SUCCESS',
 				payload: {
 					userId: result.userId,
+					username: result.username,
 					token: result.token,
 				},
 			});
