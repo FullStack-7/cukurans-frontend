@@ -1,14 +1,37 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { AiFillStar } from 'react-icons/ai';
+import { authContext } from '../../context/AuthContext';
+import { BASE_URL } from '../../../config';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
 
 const FeedbackForm = () => {
 	const [rating, setRating] = useState(0);
 	const [hover, setHover] = useState(0);
 	const [reviewText, setReviewText] = useState('');
 
-	const handleSubmitText = (e) => {
+	const { userId } = useContext(authContext)
+	const { id } = useParams();
+
+	const handleSubmitText = async (e) => {
 		e.preventDefault();
-	};
+	  
+		try {
+		  const feedbackData = {
+			userId: userId,
+			barberId: id,
+			rating: rating,
+			pesan: reviewText
+		  };
+
+			console.log(feedbackData);
+		  await axios.post(`${BASE_URL}/rating`, feedbackData);
+		  setRating(0);
+		  setReviewText('');
+		} catch (error) {
+		  console.error('Gagal mengirim feedback:', error);
+		}
+	  };
 
 	return (
 		<form action="">
@@ -54,7 +77,7 @@ const FeedbackForm = () => {
 					className="border border-solid border-[#006ff34] focus:outline outline-primaryColor w-full px-4 py-3 rounded-md"
 					rows="5"
 					placeholder="Write your message"
-					onClick={() => setReviewText(e.target.value)}></textarea>
+					onChange={(e) => setReviewText(e.target.value)}></textarea>
 			</div>
 
 			<button
