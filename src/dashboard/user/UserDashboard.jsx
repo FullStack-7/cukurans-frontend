@@ -1,25 +1,27 @@
-import { useState } from 'react';
-import userImg from '../../assets/avatar.png';
+import { useState, useContext } from 'react';
+import { toast } from 'react-toastify';
+import { authContext } from '../../context/AuthContext.jsx';
+import { useNavigate } from 'react-router-dom';
 
 import UserBooking from './UserBooking';
 
 const UserDashboard = () => {
+	const { dispatch } = useContext(authContext);
 	const [tab, setTab] = useState('bookings');
+
+	const navigate = useNavigate();
+	const handleLogout = (e) => {
+		e.preventDefault();
+		dispatch({ type: 'LOGOUT' });
+
+		toast.success('Logout successfully');
+		navigate('/login');
+	};
 
 	return (
 		<div className="max-w-[1170px] px-5 mx-auto mt-8">
 			<div className="grid md:grid-cols-3 gap-10">
 				<div className="pb-[50px] px-[30px] rounded-md">
-					<div className="flex items-center justify-center">
-						<figure className="w-[100px] h-[100px] rounded-full border-2 border-solid border-primaryColor">
-							<img
-								src={userImg}
-								alt=""
-								className="w-full h-full rounded-full"
-							/>
-						</figure>
-					</div>
-
 					<div className="text-center mt-4">
 						<h3 className="text-[18px] leading-[30px] text-headingColor font-bolc">
 							Bgsxsxs
@@ -31,7 +33,9 @@ const UserDashboard = () => {
 					</div>
 
 					<div className="mt-[50px] md:mt-[100px]">
-						<button className="w-full p-3 text-[16px] bg-[#ff3c3c] leading-7 rounded-md text-white">
+						<button
+							onClick={handleLogout}
+							className="w-full p-3 text-[16px] bg-[#ff3c3c] leading-7 rounded-md text-white">
 							Logout
 						</button>
 					</div>
