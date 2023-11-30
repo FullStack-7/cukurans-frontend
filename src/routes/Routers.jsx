@@ -21,7 +21,7 @@ const Routers = () => {
 			<Route path="/contact" element={<Contact />} />
 			<Route path="/login" element={<Login />} />
 			<Route path="/register" element={<SignUp />} />
-			<Route path="/dashboard-user" element={<UserDashboard />} />
+			<Route path="/users/userprofile/:id" element={<UserDashboard />} />
 			<Route path="/dashboard-barber" element={<BarberDashboard />} />
 		</Routes>
 	);

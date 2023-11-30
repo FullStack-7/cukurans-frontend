@@ -1,8 +1,8 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useContext } from 'react';
 import { NavLink, Link } from 'react-router-dom';
-import userImg from '../../assets/avatar-icon.png';
 import logo from '../../assets/logo.png';
 import { BiMenu } from 'react-icons/bi';
+import { authContext } from '../../context/AuthContext.jsx';
 
 const navLinks = [
 	{
@@ -25,6 +25,7 @@ const navLinks = [
 const Header = () => {
 	const headerRef = useRef(null);
 	const menuRef = useRef(null);
+	const { userId, username, token } = useContext(authContext);
 
 	const handleStickyHeader = () => {
 		window.addEventListener('scroll', () =>
@@ -72,19 +73,24 @@ const Header = () => {
 
 					{/* Nav Right */}
 					<div className="flex items-center gap-2">
-						<div className="hidden">
-							<Link to="/">
-								<figure className="w-[35px] h-[35px] rounded-full">
-									<img src={userImg} alt="" className="w-full rounded-full" />
-								</figure>
+						{username && token && userId ? (
+							<div>
+								<Link to={`/users/userprofile/${userId}`}>
+									<p className="text-xl">
+										Hi,{' '}
+										<span className="text-primaryColor font-[600] ">
+											{username}
+										</span>
+									</p>
+								</Link>
+							</div>
+						) : (
+							<Link to="/login">
+								<button className="bg-primaryColor py-2 px-4 text-white font-[600] h-[44px] flex items-center justify-center rounded-lg">
+									Login
+								</button>
 							</Link>
-						</div>
-
-						<Link to="/login">
-							<button className="bg-primaryColor py-2 px-4 text-white font-[500] h-[44px] flex items-center justify-center rounded-lg text-[18px] hover:bg-hoverColor">
-								Login
-							</button>
-						</Link>
+						)}
 
 						<span className="md:hidden" onClick={toggleMenu}>
 							<BiMenu className="w-6 h-6 cursor-pointer" />
