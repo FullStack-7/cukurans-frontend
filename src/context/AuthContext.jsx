@@ -13,13 +13,6 @@ export const authContext = createContext(initialState);
 
 const authReducer = (state, action) => {
 	switch (action.type) {
-		case 'LOGIN_START':
-			return {
-				userId: null,
-				username: null,
-				token: null,
-			};
-
 		case 'LOGIN_SUCCESS':
 			return {
 				userId: action.payload.userId,
@@ -29,9 +22,9 @@ const authReducer = (state, action) => {
 
 		case 'LOGOUT':
 			return {
-				userId: null,
-				username: null,
-				token: null,
+				userId: localStorage.removeItem('userId'),
+				username: localStorage.removeItem('username'),
+				token: localStorage.removeItem('token'),
 			};
 
 		default:
