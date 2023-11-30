@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from 'react';
 import { toast } from 'react-toastify';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { BASE_URL } from '../../../config';
 import { authContext } from '../../context/AuthContext';
@@ -16,6 +16,8 @@ const SideForm = () => {
 	const { userId } = useContext(authContext);
 
 	const { id } = useParams();
+
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		getDetails();
@@ -63,9 +65,8 @@ const SideForm = () => {
 				selectedTime: selectedTime,
 			};
 
-			console.log(bookingData);
-
 			await axios.post(`${BASE_URL}/orders`, bookingData);
+			navigate('/payment');
 			toast.success('Booking successful');
 		} catch (error) {
 			console.error(error);
@@ -94,9 +95,6 @@ const SideForm = () => {
 							<li
 								className="flex items-center justify-between mb-2"
 								key={details.data.schedule._id}>
-								<p className="text-[15px] leading-6 text-textColor font-semibold">
-									{details.data.schedule[0].day}
-								</p>
 								<p className="text-[15px] leading-6 text-textColor font-semibold">
 									{details.data.schedule[0].waktu}
 								</p>

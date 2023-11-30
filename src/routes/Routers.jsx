@@ -7,7 +7,8 @@ import BarberDashboard from '../dashboard/Barber/BarberDashboard';
 import BarberDetails from '../pages/Barbers/BarberDetails';
 import SignUp from '../pages/SignUp';
 import Barbers from '../pages/Barbers/Barbers';
-import UserDashboard from '../dashboard/User/UserDashboard';
+import Payment from '../pages/Barbers/Payment.jsx';
+import UserDashboard from '../dashboard/user/UserDashboard';
 
 import { Routes, Route } from 'react-router-dom';
 
@@ -21,6 +22,7 @@ const Routers = () => {
 			<Route path="/contact" element={<Contact />} />
 			<Route path="/login" element={<Login />} />
 			<Route path="/register" element={<SignUp />} />
+			<Route path="/payment" element={<Payment />} />
 			<Route path="/users/userprofile/:id" element={<UserDashboard />} />
 			<Route path="/dashboard-barber" element={<BarberDashboard />} />
 		</Routes>
