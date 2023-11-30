@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { BASE_URL } from '../../../config';
 import { authContext } from '../../context/AuthContext';
-import BookingCard from '../../components/Barbers/BookingCard';
 
 const SideForm = () => {
 	const [isOpen, setIsOpen] = useState(false);
@@ -28,9 +27,8 @@ const SideForm = () => {
 			const { data } = await response;
 			setDetails(data);
 			if (data && data.price) {
-                setDetails(data);
-                setTotalPrice(data.price);
-            }
+				setTotalPrice((prevTotalPrice) => prevTotalPrice + data.price);
+			  }
 		} catch (error) {
 			console.info(error);
 		}
@@ -50,15 +48,16 @@ const SideForm = () => {
 	
 	const handleBooking = async () => {
 		try {
+			const barberPrice = details.data?.price || 0;
 			const bookingData = {
 				userId:userId,
-				barberId: id, // Replace with the actual barber ID
+				barberId: id, 
 				selectedServices: selectedServices.map((service) => ({
 					serviceId: service._id,
-					price: service.price // If price is required in the backend
+					price: service.price
 				})),
-				totalAmount: totalPrice,
-				selectedDate: new Date(selectedDate), // Convert selectedDate to Date object
+				totalAmount: totalPrice + barberPrice,
+				selectedDate: new Date(selectedDate),
 				selectedTime: selectedTime,
 			};
 
@@ -175,7 +174,7 @@ const SideForm = () => {
 					</ul>
 				</div>
 				<div className="mb-4">
-					<p className="text-lg font-semibold">Total Harga: Rp. {totalPrice}</p>
+					<p className="text-lg font-semibold">Total Harga: Rp. {totalPrice + (details.data?.price || 0)}</p>
 				</div>
 				<button
 					className="btn px-2 w-full rounded-md bg-green-500 text-white"
