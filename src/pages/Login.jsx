@@ -42,6 +42,7 @@ const Login = () => {
 					userId: result.userId,
 					username: result.username,
 					token: result.token,
+					role: result.role,
 				},
 			});
 
