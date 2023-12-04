@@ -41,6 +41,7 @@ const UserBooking = () => {
 									<th>Jam Booking</th>
 									<th>Tanggal Booking</th>
 									<th>Total Harga</th>
+									<th>Pembayaran</th>
 								</tr>
 							</thead>
 							<tbody className="text-center">
@@ -48,6 +49,9 @@ const UserBooking = () => {
 									<td className="px-6 py-3">{item.selectedTime}</td>
 									<td className="px-6 py-3">{formatDate(item.selectedDate)}</td>
 									<td className="px-6 py-3">Rp. {item.totalAmount}</td>
+									<td className="px-6 py-3">
+										{item.paymentMethod.toUpperCase()}
+									</td>
 								</tr>
 							</tbody>
 						</table>
