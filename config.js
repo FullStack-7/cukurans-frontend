@@ -1,1 +1,1 @@
-export const BASE_URL = 'https://tiny-blue-cheetah-garb.cyclic.app';
+export const BASE_URL = 'https://inquisitive-calf-tights.cyclic.app';

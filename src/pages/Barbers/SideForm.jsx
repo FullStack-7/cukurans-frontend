@@ -4,9 +4,11 @@ import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { BASE_URL } from '../../../config';
 import { authContext } from '../../context/AuthContext';
+import Payment from './Payment';
 
 const SideForm = () => {
 	const [isOpen, setIsOpen] = useState(false);
+	const [showPaymentModal, setShowPaymentModal] = useState(false);
 	const [selectedDate, setSelectedDate] = useState('');
 	const [selectedTime, setSelectedTime] = useState('');
 	const [selectedServices, setSelectedServices] = useState([]);
@@ -66,8 +68,8 @@ const SideForm = () => {
 			};
 
 			await axios.post(`${BASE_URL}/orders`, bookingData);
-			navigate('/payment');
 			toast.success('Booking successful');
+			setShowPaymentModal(true);
 		} catch (error) {
 			console.error(error);
 		}
@@ -123,6 +125,7 @@ const SideForm = () => {
 					</div>
 				</>
 			)}
+			
 
 			{isOpen && (
 				<div className="modal">
@@ -195,6 +198,24 @@ const SideForm = () => {
 						onClick={() => setIsOpen(false)}>
 						Cancel
 					</button>
+				</div>
+			)}
+
+			{showPaymentModal && (
+				<div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+					<div className="bg-white rounded-md w-3/4 md:w-96">
+						<Payment
+							details={{
+								selectedDate,
+								selectedTime,
+								selectedServices,
+								totalPrice,
+								barberDetails: details.data
+							}}
+							onClose={() => setShowPaymentModal(false)}
+						/>
+
+					</div>
 				</div>
 			)}
 
