@@ -3,6 +3,7 @@ import { AiFillStar } from 'react-icons/ai';
 import { authContext } from '../../context/AuthContext';
 import { BASE_URL } from '../../../config';
 import { useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import axios from 'axios';
 
 const FeedbackForm = () => {
@@ -24,8 +25,9 @@ const FeedbackForm = () => {
 			pesan: reviewText
 		  };
 
-			console.log(feedbackData);
+		// console.log(feedbackData);
 		  await axios.post(`${BASE_URL}/rating`, feedbackData);
+		  toast.success('Thankyou')
 		  setRating(0);
 		  setReviewText('');
 		} catch (error) {

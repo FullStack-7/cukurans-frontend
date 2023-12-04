@@ -22,7 +22,7 @@ const TestimonialList = () => {
 			'Content-Type': 'application/json',
 		  },
 		});
-		console.log(response)
+		// console.log(response)
 		const { data } = response;
 		setTestimonials(response.data.ratings)
 	  } catch (error) {
