@@ -25,7 +25,7 @@ const navLinks = [
 const Header = () => {
 	const headerRef = useRef(null);
 	const menuRef = useRef(null);
-	const { userId, username, token } = useContext(authContext);
+	const { userId, username, token, role } = useContext(authContext);
 
 	const handleStickyHeader = () => {
 		window.addEventListener('scroll', () =>
@@ -73,9 +73,14 @@ const Header = () => {
 
 					{/* Nav Right */}
 					<div className="flex items-center gap-2">
-						{username && token && userId ? (
+						{username && token && userId && role ? (
 							<div>
-								<Link to={`/users/userprofile/${userId}`}>
+								<Link
+									to={`${
+										role === 'barber'
+											? '/dashboard-barber'
+											: `/users/userprofile/${userId}`
+									}`}>
 									<p className="text-xl">
 										Hi,{' '}
 										<span className="text-primaryColor font-[600] ">
