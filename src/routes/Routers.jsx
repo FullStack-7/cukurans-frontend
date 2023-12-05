@@ -1,13 +1,13 @@
 import React from 'react';
-import Home from '../pages/Home';
-import Services from '../pages/Services';
-import Contact from '../pages/Contact';
-import Login from '../pages/Login';
-import BarberDashboard from '../dashboard/barber/BarberDashboard';
-import BarberDetails from '../pages/Barbers/BarberDetails';
-import SignUp from '../pages/SignUp';
-import Barbers from '../pages/Barbers/Barbers';
-import UserDashboard from '../dashboard/user/UserDashboard';
+import Home from '../pages/Home.jsx';
+import Services from '../pages/Services.jsx';
+import Contact from '../pages/Contact.jsx';
+import Login from '../pages/Login.jsx';
+import BarberDashboard from '../dashboard/barber/BarberDashboard.jsx';
+import BarberDetails from '../pages/Barbers/BarberDetails.jsx';
+import SignUp from '../pages/Signup.jsx';
+import Barbers from '../pages/Barbers/Barbers.jsx';
+import UserDashboard from '../dashboard/user/UserDashboard.jsx';
 
 import { Routes, Route } from 'react-router-dom';
 
